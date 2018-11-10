@@ -1,0 +1,23 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: lob
+  name: lob
+rules:
+- apiGroups: ["", "apps", "extensions"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: lob
+ namespace: lob
+roleRef:
+ kind: Role
+ name: lob
+ apiGroup: rbac.authorization.k8s.io
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: fb8ccebb-842c-4aa5-a95c-360927c49bff
